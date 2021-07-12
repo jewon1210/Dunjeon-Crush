@@ -26,27 +26,27 @@ public class SceneManagerScript : MonoBehaviour
     {
     }
 
-    void GoLobbyScene()
+    public void GoLobbyScene()
     {
         SceneManager.LoadScene("LobbyScene");
     }
 
-    void GoInGameScene()
+    public void GoInGameScene()
     {
         SceneManager.LoadScene("InGameScene");
     }
 
-    void GoStageSelectScene()
+    public void GoStageSelectScene()
     {
         
     }
 
-    void GoResultScene()
+    public void GoResultScene()
     {
 
     }
 
-    void GoCharacterMakingScene()
+    public void GoCharacterMakingScene()
     {
 
     }

@@ -378,8 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e227577c5a194ba246d63582e3419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Continuous: 0
   Active: 0
 --- !u!1107 &2865545348582874288
 AnimatorStateMachine:
