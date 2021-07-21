@@ -31,7 +31,7 @@ namespace Assets.HeroEditor.FantasyHeroes.TestRoom.Scarecrow
 
         private void OnAnimationEvent(string eventName)
         {
-            if (eventName == "Hit" && Vector2.Distance(Character.MeleeWeapon.Edge.position, transform.position) < 1.5)
+            if (eventName == "Hit" && Vector3.Distance(Character.MeleeWeapon.Edge.position, transform.position) < 1.5)
             {
                 GetComponent<Monster>().Spring();
             }

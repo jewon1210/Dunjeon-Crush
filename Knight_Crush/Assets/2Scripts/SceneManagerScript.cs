@@ -20,6 +20,7 @@ public class SceneManagerScript : MonoBehaviour
 
     void Start()
     {
+        UniqueInstance = this;
     }
 
     void Update()

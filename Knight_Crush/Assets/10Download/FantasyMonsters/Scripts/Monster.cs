@@ -73,6 +73,11 @@ namespace Assets.FantasyMonsters.Scripts
             SetState(MonsterState.Death);
         }
 
+        public MonsterState GetState()
+        {
+            return (MonsterState)Animator.GetInteger("State");
+        }
+
         /// <summary>
         /// Called from animation. Can be used by the game to handle animation events.
         /// </summary>

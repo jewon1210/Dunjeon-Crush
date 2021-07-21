@@ -39,7 +39,7 @@ namespace Assets.HeroEditor.Common.CharacterScripts
 	    /// </summary>
 	    public void CustomEvent(string eventName)
 	    {
-		    OnCustomEvent(eventName);
+            OnCustomEvent(eventName);
 	    }
 
 	    /// <summary>

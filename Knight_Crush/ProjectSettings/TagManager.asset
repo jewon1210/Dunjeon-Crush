@@ -47,3 +47,6 @@ TagManager:
   - name: Floor
     uniqueID: 4231086883
     locked: 0
+  - name: Monster
+    uniqueID: 4170124849
+    locked: 0

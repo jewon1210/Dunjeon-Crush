@@ -163,7 +163,10 @@
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\Interface\InventoryBase.cs" />
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\Interface\ShopBase.cs" />
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\ItemCollection.cs" />
+    <Compile Include="Assets\2Scripts\MonsterHitted.cs" />
+    <Compile Include="Assets\2Scripts\MonsterMovingScript.cs" />
     <Compile Include="Assets\2Scripts\MovementScript.cs" />
+    <Compile Include="Assets\2Scripts\PlayerAttack.cs" />
     <Compile Include="Assets\2Scripts\SceneManagerScript.cs" />
     <None Include="Assets\10Download\HeroEditor\Common\Shaders\GrayPaint.shader" />
     <None Include="Assets\10Download\HeroEditor\Common\Newtonsoft\LICENSE.txt" />
