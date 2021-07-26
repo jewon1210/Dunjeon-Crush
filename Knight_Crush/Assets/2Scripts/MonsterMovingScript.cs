@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Assets.FantasyMonsters.Scripts;
 
 namespace Assets.Origin.Scripts
@@ -8,14 +9,19 @@ namespace Assets.Origin.Scripts
     public class MonsterMovingScript : MonoBehaviour
     {
         public Monster Monster;
+        public Transform PlayerTrans;
+        public Transform MonsterTrans;
         public CharacterController Controller;
-
+        public GameObject DetectedIcon;
         Vector3 speed;
 
+        bool detected;
         float timecheck;
 
         void Start()
         {
+            PlayerTrans = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
             if (Controller == null)
             {
                 Controller = Monster.gameObject.AddComponent<CharacterController>();
@@ -27,14 +33,31 @@ namespace Assets.Origin.Scripts
             Monster.Animator.SetBool("Action", true);
 
             timecheck = 0;
+
+            detected = false;
+
+            DetectedIcon.SetActive(false);
         }
 
         Vector3 direction;
 
         void Update()
         {
+            if (detected)
+            {
+                timecheck += Time.deltaTime;
+                ChaseMove();
+                if (timecheck >= 1.0f)
+                    DetectedIcon.SetActive(false);
+                return;
+            }
+
             timecheck += Time.deltaTime;
             float RandomDelay = Random.Range(0.6f, 1.5f);
+
+            if (direction == Vector3.zero)
+                RandomDelay = 2.1f;
+
             if (timecheck > RandomDelay)
             {
                 direction = Vector3.zero;
@@ -46,6 +69,13 @@ namespace Assets.Origin.Scripts
 
             Monster.Animator.SetBool("Action", false);
             Move(direction);
+
+            if (Vector3.Distance(PlayerTrans.position, MonsterTrans.position) < 5.0f)
+            {
+                detected = true;
+                timecheck = 0;
+                DetectedIcon.SetActive(true);
+            }
         }
 
         public void RandomDir()
@@ -87,9 +117,25 @@ namespace Assets.Origin.Scripts
             Controller.Move(speed * Time.deltaTime);
         }
 
+        public void ChaseMove()
+        {
+            Vector3 vectorValue;
+            vectorValue = PlayerTrans.position - MonsterTrans.position;
+            speed = new Vector3(vectorValue.x, 0, 2*vectorValue.z);
+
+            Turn(speed.x);
+            
+            Monster.SetState(MonsterState.Walk);
+
+            speed.y -= 1000 * Time.deltaTime;
+
+            Controller.Move(speed * Time.deltaTime);
+        }
+
         public void Turn(float direction)
         {
             Monster.transform.localScale = new Vector3(Mathf.Sign(direction)*-0.4f, 0.4f, 1);
         }
+
     }
 }
