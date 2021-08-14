@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MAttack
+  - DetectedIcon
   layers:
   - Default
   - TransparentFX
@@ -49,4 +51,10 @@ TagManager:
     locked: 0
   - name: Monster
     uniqueID: 4170124849
+    locked: 0
+  - name: UI
+    uniqueID: 1395686565
+    locked: 0
+  - name: Hero
+    uniqueID: 1454114391
     locked: 0

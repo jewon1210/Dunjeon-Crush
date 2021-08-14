@@ -12,7 +12,6 @@ namespace Assets.HeroEditor.Common.ExampleScripts
     {
         public AnimationEvents AnimationEvents;
         public Transform Edge;
-
         /// <summary>
         /// Listen animation events to determine hit moments.
         /// </summary>

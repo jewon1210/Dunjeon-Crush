@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.HeroEditor.Common.CharacterScripts;
+using Assets.Origin.Scripts;
 
 public class MovementScript : MonoBehaviour
 {
     public Character character;
     public CharacterController Controller;
+    public HealthSliderScript PlayerHp;
 
     Vector3 speed;
 
@@ -22,10 +24,15 @@ public class MovementScript : MonoBehaviour
         }
 
         character.Animator.SetBool("Ready", true);
+
+        PlayerHp = FindObjectOfType<HealthSliderScript>();
     }
 
     void Update()
     {
+        if (PlayerHp.currentHp() <= 0.0f)
+            return;
+
         var direction = Vector3.zero;
 
         if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -1;

@@ -1,30 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.HeroEditor.Common.CharacterScripts;
 using UnityEngine;
-using UnityEngine.AI;
 using Assets.FantasyMonsters.Scripts;
 
 namespace Assets.Origin.Scripts
 {
     public class MonsterMovingScript : MonoBehaviour
     {
-        public Monster Monster;
+        public Character Character;
         public Transform PlayerTrans;
-        public Transform MonsterTrans;
         public CharacterController Controller;
-        public GameObject DetectedIcon;
         Vector3 speed;
 
-        bool detected;
+        public Monster Monster;
+        public Transform MonsterTrans;
+        public GameObject DetectedIcon;
+
+        public Animator ani;
+
+        bool detected, PlayerDied, MobDied;
         float timecheck;
 
         void Start()
         {
             PlayerTrans = GameObject.FindWithTag("Player").GetComponent<Transform>();
+            Character = FindObjectOfType<Character>();
+
+            Monster = this.gameObject.GetComponent<Monster>();
+            MonsterTrans = Monster.transform;
+            DetectedIcon = MonsterTrans.Find("DetectedIcon").gameObject;
+            ani = Monster.GetComponent<Animator>();
 
             if (Controller == null)
             {
-                Controller = Monster.gameObject.AddComponent<CharacterController>();
+                Controller = this.Monster.gameObject.AddComponent<CharacterController>();
                 Controller.center = new Vector3(0, 1.27f);
                 Controller.height = 1.0f;
                 Controller.radius = 0.75f;
@@ -35,20 +45,35 @@ namespace Assets.Origin.Scripts
             timecheck = 0;
 
             detected = false;
+            PlayerDied = false;
+            MobDied = false;
 
             DetectedIcon.SetActive(false);
         }
 
         Vector3 direction;
-
         void Update()
         {
-            if (detected)
+            if (MobDied)
+            {
+                DetectedIcon.SetActive(false);
+                return;
+            }
+            if (detected && !PlayerDied)
             {
                 timecheck += Time.deltaTime;
-                ChaseMove();
                 if (timecheck >= 1.0f)
+                {
                     DetectedIcon.SetActive(false);
+                    timecheck = 0;
+                }
+
+                ChaseMove();
+
+                if (Vector2.Distance(PlayerTrans.position, MonsterTrans.position) <= 1.5f)
+                {
+                    ani.SetTrigger("Attack");
+                }
                 return;
             }
 
@@ -70,7 +95,7 @@ namespace Assets.Origin.Scripts
             Monster.Animator.SetBool("Action", false);
             Move(direction);
 
-            if (Vector3.Distance(PlayerTrans.position, MonsterTrans.position) < 5.0f)
+            if (Vector3.Distance(PlayerTrans.position, MonsterTrans.position) < 5.0f && !PlayerDied)
             {
                 detected = true;
                 timecheck = 0;
@@ -121,7 +146,7 @@ namespace Assets.Origin.Scripts
         {
             Vector3 vectorValue;
             vectorValue = PlayerTrans.position - MonsterTrans.position;
-            speed = new Vector3(vectorValue.x, 0, 2*vectorValue.z);
+            speed = new Vector3(vectorValue.x, 0, 2.5f*vectorValue.z);
 
             Turn(speed.x);
             
@@ -137,5 +162,19 @@ namespace Assets.Origin.Scripts
             Monster.transform.localScale = new Vector3(Mathf.Sign(direction)*-0.4f, 0.4f, 1);
         }
 
+        public void PlayerDie()
+        {
+            PlayerDied = true;
+        }
+
+        public void MonsterDie()
+        {
+            MobDied = true;
+        }
+
+        public void Detected()
+        {
+            detected = true;
+        }
     }
 }
