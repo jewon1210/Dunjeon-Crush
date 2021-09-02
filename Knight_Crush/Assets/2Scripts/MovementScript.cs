@@ -35,10 +35,10 @@ public class MovementScript : MonoBehaviour
 
         var direction = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -1;
-        if (Input.GetKey(KeyCode.RightArrow)) direction.x = 1;
-        if (Input.GetKey(KeyCode.UpArrow)) direction.z = 1;
-        if (Input.GetKey(KeyCode.DownArrow)) direction.z = -1;
+        if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -0.8f;
+        if (Input.GetKey(KeyCode.RightArrow)) direction.x = 0.8f;
+        if (Input.GetKey(KeyCode.UpArrow)) direction.z = 0.8f;
+        if (Input.GetKey(KeyCode.DownArrow)) direction.z = -0.8f;
 
         Move(direction);
     }
@@ -62,6 +62,6 @@ public class MovementScript : MonoBehaviour
 
     public void Turn(float direction)
     {
-        character.transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
+        character.transform.localScale = new Vector3(Mathf.Sign(direction)* 0.8f, 0.8f, 1);
     }
 }

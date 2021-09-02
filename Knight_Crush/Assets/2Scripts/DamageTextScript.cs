@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Origin.Scripts;
+using Assets.HeroEditor.FantasyHeroes.MonsterHitted;
 
 namespace Assets.Origin.Scripts
 {
@@ -11,11 +12,11 @@ namespace Assets.Origin.Scripts
         TextMesh Textmesh;
         public LoadLevelDataScript leveldata;
         public HealthSliderScript Hp;
-
         public string sortingLayerName;
         public int sortingOrder;
-
-        int levelvalue = 0;
+        public PlayerStatus PS;
+        public int Mobvalue;
+        int Playerlevel;
 
         void Start()
         {
@@ -23,19 +24,19 @@ namespace Assets.Origin.Scripts
             mesh.sortingLayerName = sortingLayerName;
             mesh.sortingOrder = sortingOrder;
 
+            PS = FindObjectOfType<PlayerStatus>();
+            Playerlevel = PS.getLevel(1);
+
+
             leveldata = FindObjectOfType<LoadLevelDataScript>();
             Hp = FindObjectOfType<HealthSliderScript>();
             this.Textmesh = this.gameObject.GetComponent<TextMesh>();
+
             TextUpdate();
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && levelvalue >= 0)
-                levelvalue--;
-            if (Input.GetKeyDown(KeyCode.Alpha2) && levelvalue < 20)
-                levelvalue++;
-
             float alpha = this.Textmesh.color.a;
 
             alpha -= Time.deltaTime;
@@ -46,10 +47,10 @@ namespace Assets.Origin.Scripts
                 Destroy(this.gameObject);
         }
 
-        public void AlphaColorReset()
-        {
-            this.Textmesh.color = new Color(0.6784314f, 0, 0, 1);
-        }
+        //public void AlphaColorReset()
+        //{
+        //    this.Textmesh.color = new Color(0.6784314f, 0, 0, 1);
+        //}
 
         public void TextUpdate()
         {
@@ -58,11 +59,11 @@ namespace Assets.Origin.Scripts
             switch (type)
             {
                 case 0:
-                    value = leveldata.getValue(levelvalue, 1);
+                    value = leveldata.getValue(Playerlevel, 1);
                     Textmesh.text = value.ToString();
                     break;
                 case 1:
-                    value = leveldata.getMobValue(levelvalue, 1);
+                    value = leveldata.getMobValue(Mobvalue, 1);
                     Textmesh.text = value.ToString();
                     Hp.UpdateSlider(0, value);
                     break;

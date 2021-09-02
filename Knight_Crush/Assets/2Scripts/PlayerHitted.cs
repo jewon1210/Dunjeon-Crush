@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.FantasyMonsters.Scripts;
 using Assets.HeroEditor.Common.CharacterScripts;
 using Assets.Origin.Scripts;
+using Assets.HeroEditor.FantasyHeroes.MonsterHitted;
 
 namespace Assets.Origin.Scripts
 {
@@ -15,12 +16,11 @@ namespace Assets.Origin.Scripts
         public GameObject DamageTxt;
         public HealthSliderScript PlayerHp;
         MonsterMovingScript MMoving;
+
         void Start()
         {
             Monster = this.gameObject.GetComponent<Monster>();
             Character = FindObjectOfType<Character>();
-
-            DamageTxt = Resources.Load("HeroDamageText") as GameObject;
 
             if (Monster != null)
             {
@@ -36,6 +36,7 @@ namespace Assets.Origin.Scripts
             if (PlayerHp.currentHp() <= 0.0f)
             {
                 Character.SetState(CharacterState.DeathB);
+                Character.SetExpression("Dead");
             }
 
         }
@@ -55,7 +56,7 @@ namespace Assets.Origin.Scripts
                 Instantiate(DamageTxt, y, Quaternion.identity);
                 Character.GetComponent<Character>().Spring();
 
-                if(PlayerHp.currentHp() <= 0.0f)
+                if (PlayerHp.currentHp() <= 0.0f)
                 {
                     MMoving.PlayerDie();
                     

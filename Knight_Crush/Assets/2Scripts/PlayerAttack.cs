@@ -14,7 +14,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        
+        Character = FindObjectOfType<Character>();
+        Attack = KeyCode.LeftControl;
     }
 
     void Update()

@@ -10,26 +10,34 @@ namespace Assets.HeroEditor.FantasyHeroes.MonsterHitted
     /// </summary>
     public class MonsterHitted : MonoBehaviour
     {
+        public LoadLevelDataScript Leveldata;
+
         public Character Character;
         public SpriteRenderer Impact;
         bool Hitted = false, died = false;
         float timecheck = 0;
 
-        int hp = 100; //나중에 바꾸기
-
         public GameObject DamageTxt;
         MonsterMovingScript MMoving;
-
+        int hp = 0;
+        int Damage = 0;
+        public int level;
+        PlayerStatus PS;
         public void Start()
         {
+            DamageTxt = Resources.Load("DamageText") as GameObject;
+            Leveldata = FindObjectOfType<LoadLevelDataScript>();
             Character = FindObjectOfType<Character>();
-
+            PS = FindObjectOfType<PlayerStatus>();
             if (Character != null)
             {
                 Character.Animator.GetComponent<AnimationEvents>().OnCustomEvent += OnAnimationEvent;
             }
 
             MMoving = this.gameObject.GetComponent<MonsterMovingScript>();
+
+            hp = (int)Leveldata.getMobValue(level, 2);
+            Damage = (int)Leveldata.getMobValue(level, 1);
         }
 
         private void Update()
@@ -83,10 +91,10 @@ namespace Assets.HeroEditor.FantasyHeroes.MonsterHitted
                 //    return;
                 //}
 
-                
+                hp -= PS.getStatus(0);
+                Debug.Log(hp);
                 Impact.color = Color.gray;
                 Hitted = true;
-                hp -= 50; // 나중에 바꾸기
             }
         }
 

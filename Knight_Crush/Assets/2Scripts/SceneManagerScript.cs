@@ -21,6 +21,8 @@ public class SceneManagerScript : MonoBehaviour
     void Start()
     {
         UniqueInstance = this;
+
+        GoLobbyScene();
     }
 
     void Update()
@@ -35,6 +37,16 @@ public class SceneManagerScript : MonoBehaviour
     public void GoInGameScene()
     {
         SceneManager.LoadScene("InGameScene");
+    }
+
+    public void GoTutorialScene()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
+
+    public void GoStoryScene()
+    {
+        SceneManager.LoadScene("StoryScene");
     }
 
     public void GoStageSelectScene()

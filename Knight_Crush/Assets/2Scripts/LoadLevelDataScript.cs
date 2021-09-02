@@ -15,10 +15,12 @@ namespace Assets.Origin.Scripts
 
         private void Start()
         {
+            this.level_data = FindObjectOfType<LevelDesignData>();
             DontDestroyOnLoad(gameObject);
             this.level_data.initialize();
             this.level_data.LoadLevelData(this.LevelDataText);
             this.level_data.Load_Mon_LevelData(this.MobLevelDataText);
+            getAllStatusValue(0);
         }
 
         public void getAllStatusValue(int level)
@@ -26,13 +28,13 @@ namespace Assets.Origin.Scripts
             this.level_data.currentLevel(level);
             for (int i = 0; i < 5; i++)
             {
-                getValue(level, i);
+                Debug.Log(getValue(level, i));
             }
 
             this.level_data.currentMobLevel(level);
             for (int i = 0; i < 5; i++)
             {
-                getValue(level, i);
+                Debug.Log(getValue(level, i));
             }
         }
 

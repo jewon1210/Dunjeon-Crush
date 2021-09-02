@@ -10,7 +10,9 @@ namespace Assets.Origin.Scripts
     public class HealthSliderScript : MonoBehaviour
     {
         public Slider HpSlider;
-        public LoadLevelDataScript LevelData;
+        public PlayerStatus Pstatus;
+        public Text HpText;
+        public Text TotalHpText;
 
         float timecheck = 0;
         bool Once = false;
@@ -18,13 +20,14 @@ namespace Assets.Origin.Scripts
         void Start()
         {
             HpSlider = gameObject.GetComponent<Slider>();
-            LevelData = FindObjectOfType<LoadLevelDataScript>();
+            Pstatus = FindObjectOfType<PlayerStatus>();
+            HpSlider.value = 1;
         }
 
         void Update()
         {
             timecheck += Time.deltaTime;
-            if(timecheck >= 0.2f && !Once)
+            if(timecheck >= 0.4f && !Once)
             {
                 Set_Total_Hp_Value();
                 Once = true;
@@ -33,8 +36,11 @@ namespace Assets.Origin.Scripts
 
         public void Set_Total_Hp_Value()
         {
-            HpSlider.maxValue = LevelData.getValue(1,2);
+            string slash = "/";
+            HpSlider.maxValue = Pstatus.getStatus(2);
             HpSlider.value = HpSlider.maxValue;
+            HpText.text = HpSlider.maxValue.ToString();
+            TotalHpText.text = slash + HpSlider.maxValue.ToString();
         }
 
         public void UpdateSlider(int type, float value)
@@ -43,9 +49,11 @@ namespace Assets.Origin.Scripts
             {
                 case 0:
                     HpSlider.value -= value;
+                    HpText.text = HpSlider.value.ToString();
                     break;
                 case 1:
                     HpSlider.value += value;
+                    HpText.text = HpSlider.value.ToString();
                     break;
             }
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MAttack
   - DetectedIcon
+  - NPC
   layers:
   - Default
   - TransparentFX

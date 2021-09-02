@@ -35,7 +35,7 @@ namespace Assets.Origin.Scripts
             Damage = 0;
             Hp = 0;
         }
-}
+    }
 
     public class LevelDesignData : MonoBehaviour
     {
