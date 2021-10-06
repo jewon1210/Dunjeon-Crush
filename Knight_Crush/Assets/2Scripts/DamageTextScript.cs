@@ -64,8 +64,9 @@ namespace Assets.Origin.Scripts
                     break;
                 case 1:
                     value = leveldata.getMobValue(Mobvalue, 1);
-                    Textmesh.text = value.ToString();
-                    Hp.UpdateSlider(0, value);
+                    float Defense = leveldata.getValue(Playerlevel, 4);
+                    Textmesh.text = (value-Defense).ToString();
+                    Hp.UpdateSlider(0, value - Defense);
                     break;
             }
         }

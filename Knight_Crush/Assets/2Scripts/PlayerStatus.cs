@@ -69,7 +69,7 @@ namespace Assets.Origin.Scripts
                 case 1:
                     return PowerWeapon;
                 default:
-                    return TotalPower;
+                    return PowerArmor + PowerWeapon;
             }
         }
 

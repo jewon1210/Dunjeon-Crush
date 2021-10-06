@@ -92,7 +92,6 @@ namespace Assets.HeroEditor.FantasyHeroes.MonsterHitted
                 //}
 
                 hp -= PS.getStatus(0);
-                Debug.Log(hp);
                 Impact.color = Color.gray;
                 Hitted = true;
             }
@@ -121,6 +120,18 @@ namespace Assets.HeroEditor.FantasyHeroes.MonsterHitted
                     count++;
                 }
             }
+        }
+
+        public float TotalHp()
+        {
+            return Leveldata.getMobValue(level, 2);
+        }
+
+        public float curHp()
+        {
+            if (hp <= 0)
+                return 0;
+            return (float)hp;
         }
     }
 }

@@ -16,14 +16,6 @@ namespace Assets.Origin.Scripts
         void Start()
         {
             initialMaxPosValue();
-            Spawn(Mob[1]);
-            Spawn(Mob[0]);
-            Spawn(Mob[1]);
-        }
-
-        void Update()
-        {
-
         }
 
         void initialMaxPosValue()
@@ -57,9 +49,14 @@ namespace Assets.Origin.Scripts
         public void Spawn(GameObject Mob)
         {
             Vector3 SpawnPos = new Vector3(Random.Range(ULMax[0], DRMax[0]),
-                Random.Range(DRMax[1]+1, ULMax[1]), Random.Range(DRMax[2], ULMax[2]));
+                Random.Range(DRMax[1]+1.5f, ULMax[1]), Random.Range(DRMax[2], ULMax[2]));
 
             Instantiate(Mob, SpawnPos, Quaternion.identity);
+        }
+
+        public GameObject MobData(int level)
+        {
+            return Mob[level];
         }
     }
 }

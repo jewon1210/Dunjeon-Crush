@@ -62,6 +62,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\10Download\Dialogue Bubble\Camera controls\MouseOrbitImproved.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\Demos\2d scene\RandomMovementBehaviour.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\Demos\SayRandomThingsBehaviour.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\Demos\ScriptedDialogueBehaviour.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\Demos\UISpeechController.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\RatioLayoutFitter.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleBase.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleBehaviour.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleManager.cs" />
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleTmp.cs" />
     <Compile Include="Assets\10Download\FantasyMonsters\Scripts\AnchorManager.cs" />
     <Compile Include="Assets\10Download\FantasyMonsters\Scripts\CustomGrid.cs" />
     <Compile Include="Assets\10Download\FantasyMonsters\Scripts\Demo.cs" />
@@ -163,13 +173,16 @@
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\Interface\InventoryBase.cs" />
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\Interface\ShopBase.cs" />
     <Compile Include="Assets\10Download\HeroEditor\FantasyInventory\Scripts\ItemCollection.cs" />
+    <Compile Include="Assets\2Scripts\BillBoard.cs" />
     <Compile Include="Assets\2Scripts\DamageTextScript.cs" />
     <Compile Include="Assets\2Scripts\DialogueAnimation.cs" />
+    <Compile Include="Assets\2Scripts\DialogueAnimation_Second.cs" />
     <Compile Include="Assets\2Scripts\HealthSliderScript.cs" />
     <Compile Include="Assets\2Scripts\LevelDesignData.cs" />
     <Compile Include="Assets\2Scripts\LoadLevelDataScript.cs" />
     <Compile Include="Assets\2Scripts\LobbyScript.cs" />
     <Compile Include="Assets\2Scripts\MonsterHitted.cs" />
+    <Compile Include="Assets\2Scripts\MonsterHpBarScript.cs" />
     <Compile Include="Assets\2Scripts\MonsterMovingScript.cs" />
     <Compile Include="Assets\2Scripts\MovementScript.cs" />
     <Compile Include="Assets\2Scripts\PlayerAttack.cs" />
@@ -178,19 +191,12 @@
     <Compile Include="Assets\2Scripts\PracticeStudentScript.cs" />
     <Compile Include="Assets\2Scripts\SceneManagerScript.cs" />
     <Compile Include="Assets\2Scripts\SpawnMonsterScript.cs" />
+    <Compile Include="Assets\2Scripts\StatusWindowScript.cs" />
     <Compile Include="Assets\2Scripts\TextOutline.cs" />
+    <Compile Include="Assets\2Scripts\TutorialButtonIconScript.cs" />
+    <Compile Include="Assets\2Scripts\TutorialFightSceneScript.cs" />
     <Compile Include="Assets\2Scripts\TutorialManagerScript.cs" />
     <Compile Include="Assets\2Scripts\TutorialMovementScript.cs" />
-    <Compile Include="Assets\Dialogue Bubble\Camera controls\MouseOrbitImproved.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\Demos\2d scene\RandomMovementBehaviour.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\Demos\SayRandomThingsBehaviour.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\Demos\ScriptedDialogueBehaviour.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\Demos\UISpeechController.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\RatioLayoutFitter.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleBase.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleBehaviour.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleManager.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\SpeechBubbleTmp.cs" />
     <None Include="Assets\10Download\HeroEditor\Common\Shaders\GrayPaint.shader" />
     <None Include="Assets\10Download\HeroEditor\Common\Newtonsoft\LICENSE.txt" />
     <None Include="Assets\10Download\Generic Backgrounds\Snowy-Mountain-Background\readme.txt" />

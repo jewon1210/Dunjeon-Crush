@@ -4,34 +4,49 @@ using UnityEngine;
 using Assets.HeroEditor.Common.CharacterScripts;
 using HeroEditor.Common.Enums;
 
-
-public class PlayerAttack : MonoBehaviour
+namespace Assets.Origin.Scripts
 {
-    public Character Character;
-    public Transform ArmL;
-    public Transform ArmR;
-    public KeyCode Attack;
-
-    void Start()
+    public class PlayerAttack : MonoBehaviour
     {
-        Character = FindObjectOfType<Character>();
-        Attack = KeyCode.LeftControl;
-    }
+        public Character Character;
+        public Transform ArmL;
+        public Transform ArmR;
+        public KeyCode Attack;
 
-    void Update()
-    {
-        if (Character.Animator.GetInteger("State") >= (int)CharacterState.DeathB) return;
+        bool stop = false;
 
-        switch (Character.WeaponType)
+        void Start()
         {
-            case WeaponType.Melee1H:
-            case WeaponType.Melee2H:
-            case WeaponType.MeleePaired:
-                if (Input.GetKeyDown(Attack))
-                {
-                    Character.Slash();
-                }
-                break;
+            Character = FindObjectOfType<Character>();
+            Attack = KeyCode.LeftControl;
+        }
+
+        void Update()
+        {
+            if (stop) return;
+
+            if (Character.Animator.GetInteger("State") >= (int)CharacterState.DeathB) return;
+
+            switch (Character.WeaponType)
+            {
+                case WeaponType.Melee1H:
+                case WeaponType.Melee2H:
+                case WeaponType.MeleePaired:
+                    if (Input.GetKeyDown(Attack))
+                    {
+                        Character.Slash();
+                    }
+                    break;
+            }
+        }
+
+        public void StopAct()
+        {
+            stop = true;
+        }
+        public void StartAct()
+        {
+            stop = false;
         }
     }
 }

@@ -62,5 +62,10 @@ namespace Assets.Origin.Scripts
         {
             return HpSlider.value;
         }
+
+        public void FullHealth()
+        {
+            HpSlider.value = HpSlider.maxValue;
+        }
     }
 }

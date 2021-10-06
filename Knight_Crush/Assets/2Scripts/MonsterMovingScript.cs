@@ -167,6 +167,11 @@ namespace Assets.Origin.Scripts
             PlayerDied = true;
         }
 
+        public void PlayerRevive()
+        {
+            PlayerDied = false;
+        }
+
         public void MonsterDie()
         {
             MobDied = true;

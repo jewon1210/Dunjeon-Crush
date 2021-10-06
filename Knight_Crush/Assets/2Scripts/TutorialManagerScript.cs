@@ -19,9 +19,11 @@ namespace Assets.Origin.Scripts
 
         public Image Blackout;
         public DialogueAnimation Dialogue;
+        public DialogueAnimation_Second Dialogue_s;
 
         public GameObject[] Scenes;
         public GameObject AdventureStartUIBG;
+        public Canvas AdventureStartUICanvas;
 
         public GameObject Sword;
         public Transform SwordPos;
@@ -36,6 +38,7 @@ namespace Assets.Origin.Scripts
             _Uniqueinstance = this;
 
             Dialogue = FindObjectOfType<DialogueAnimation>();
+            Dialogue_s = FindObjectOfType<DialogueAnimation_Second>();
             StartCoroutine(SceneChange(0));
             FadeOut();
         }
@@ -58,17 +61,17 @@ namespace Assets.Origin.Scripts
             }
 
             distance = Vector3.Distance(PlayerTrans.position, SwordPos.position);
-            if (Input.GetKeyDown(KeyCode.T) && distance <= 1.5f)
+            if (distance <= 1.5f)
+                Dialogue_s.buttonsControl(1);
+            if (Input.GetKeyDown(KeyCode.Space)&& distance <= 1.5f)
             {
-                Sword.SetActive(false);
-                Player.Equip(item, EquipmentPart.MeleeWeapon1H);
-                Player.gameObject.AddComponent<PlayerAttack>();
-                startGame = true;
+                StartCoroutine(ThinkingBeforeTakeSword());
             }
 
             if (startGame && Input.GetKeyDown(KeyCode.Escape))
             {
                 AdventureStartUIBG.SetActive(true);
+                AdventureStartUICanvasSortingOrder(11);
             }
         }
 
@@ -118,8 +121,20 @@ namespace Assets.Origin.Scripts
                     Scenes[1].SetActive(true);
                     AdventureStartUIControl(0);
                     FadeOut();
+                    Dialogue_s.StartScene();
                     break;
             }
+        }
+
+        IEnumerator ThinkingBeforeTakeSword()
+        {
+            Dialogue_s.NextDialogue();
+            yield return new WaitForSeconds(2.5f);
+            Dialogue_s.NextDialogue();
+            Sword.SetActive(false);
+            Player.Equip(item, EquipmentPart.MeleeWeapon1H);
+            Player.gameObject.AddComponent<PlayerAttack>();
+            startGame = true;
         }
 
         public void AdventureStartUIControl(int TF)
@@ -129,6 +144,22 @@ namespace Assets.Origin.Scripts
 
             else if (TF == 1)
                 AdventureStartUIBG.SetActive(true);
+        }
+
+        public void CallSceneManager()
+        {
+            StartCoroutine(intervalSceneMonve());
+        }
+
+        IEnumerator intervalSceneMonve()
+        {
+            yield return new WaitForSeconds(1.5f);
+            SceneManagerScript._instance.GoTutorialScene();
+        }
+
+        public void AdventureStartUICanvasSortingOrder(int num)
+        {
+            AdventureStartUICanvas.sortingOrder = num;
         }
 
     }

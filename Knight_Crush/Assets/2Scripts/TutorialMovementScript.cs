@@ -12,7 +12,7 @@ namespace Assets.Origin.Scripts
         public CharacterController Controller;
 
         Vector3 speed;
-
+        bool stop = true;
         void Start()
         {
             if (Controller == null)
@@ -29,12 +29,14 @@ namespace Assets.Origin.Scripts
 
         void Update()
         {
+            if (stop) return;
+
             var direction = Vector3.zero;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -0.8f;
-            if (Input.GetKey(KeyCode.RightArrow)) direction.x = 0.8f;
-            if (Input.GetKey(KeyCode.UpArrow)) direction.z = 0.8f;
-            if (Input.GetKey(KeyCode.DownArrow)) direction.z = -0.8f;
+            if (Input.GetKey(KeyCode.LeftArrow)) direction.x = -0.7f;
+            if (Input.GetKey(KeyCode.RightArrow)) direction.x = 0.7f;
+            if (Input.GetKey(KeyCode.UpArrow)) direction.z = 0.7f;
+            if (Input.GetKey(KeyCode.DownArrow)) direction.z = -0.7f;
 
             Move(direction);
         }
@@ -58,7 +60,16 @@ namespace Assets.Origin.Scripts
 
         public void Turn(float direction)
         {
-            character.transform.localScale = new Vector3(Mathf.Sign(direction) * 0.8f, 0.8f, 1);
+            character.transform.localScale = new Vector3(Mathf.Sign(direction) * 0.7f, 0.7f, 1);
+        }
+
+        public void moveStop()
+        {
+            stop = true;
+        }
+        public void moveStart()
+        {
+            stop = false;
         }
     }
 }

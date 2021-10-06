@@ -62,12 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\10Download\Dialogue Bubble\UI\SpeechBubbleManager\Editor\SpeechbubbleFitterDrawer.cs" />
     <Compile Include="Assets\10Download\FantasyMonsters\Scripts\Editor\LayerManagerEditor.cs" />
     <Compile Include="Assets\10Download\HeroEditor\Common\Editor\FirearmCollectionEditor.cs" />
     <Compile Include="Assets\10Download\HeroEditor\Common\Editor\IconCollectionEditor.cs" />
     <Compile Include="Assets\10Download\HeroEditor\Common\Editor\LayerManagerEditor.cs" />
     <Compile Include="Assets\10Download\HeroEditor\Common\Editor\SpriteCollectionEditor.cs" />
-    <Compile Include="Assets\Dialogue Bubble\UI\SpeechBubbleManager\Editor\SpeechbubbleFitterDrawer.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity19_4/2019.4.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
