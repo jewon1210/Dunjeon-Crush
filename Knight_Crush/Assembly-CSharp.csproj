@@ -191,6 +191,8 @@
     <Compile Include="Assets\2Scripts\PracticeStudentScript.cs" />
     <Compile Include="Assets\2Scripts\SceneManagerScript.cs" />
     <Compile Include="Assets\2Scripts\SpawnMonsterScript.cs" />
+    <Compile Include="Assets\2Scripts\StageManagerScript.cs" />
+    <Compile Include="Assets\2Scripts\StageSelectSceneScript.cs" />
     <Compile Include="Assets\2Scripts\StatusWindowScript.cs" />
     <Compile Include="Assets\2Scripts\TextOutline.cs" />
     <Compile Include="Assets\2Scripts\TutorialButtonIconScript.cs" />

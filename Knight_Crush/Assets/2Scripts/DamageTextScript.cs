@@ -15,7 +15,7 @@ namespace Assets.Origin.Scripts
         public string sortingLayerName;
         public int sortingOrder;
         public PlayerStatus PS;
-        public int Mobvalue;
+        public int Mobvalue = 0;
         int Playerlevel;
 
         void Start()
@@ -70,5 +70,6 @@ namespace Assets.Origin.Scripts
                     break;
             }
         }
+
     }
 }

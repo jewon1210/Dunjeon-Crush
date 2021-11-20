@@ -133,5 +133,10 @@ namespace Assets.HeroEditor.FantasyHeroes.MonsterHitted
                 return 0;
             return (float)hp;
         }
+
+        public void MobDie()
+        {
+            hp = 0;
+        }
     }
 }

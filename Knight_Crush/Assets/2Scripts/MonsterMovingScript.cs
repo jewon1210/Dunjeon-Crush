@@ -19,11 +19,14 @@ namespace Assets.Origin.Scripts
 
         public Animator ani;
 
+        public Assets.FantasyMonsters.Scripts.LayerManager layer;
+
         bool detected, PlayerDied, MobDied;
         float timecheck;
 
         void Start()
         {
+            layer = this.gameObject.GetComponent<Assets.FantasyMonsters.Scripts.LayerManager>();
             PlayerTrans = GameObject.FindWithTag("Player").GetComponent<Transform>();
             Character = FindObjectOfType<Character>();
 
@@ -49,6 +52,7 @@ namespace Assets.Origin.Scripts
             MobDied = false;
 
             DetectedIcon.SetActive(false);
+            layer.SetSortingGroupOrder(0);
         }
 
         Vector3 direction;

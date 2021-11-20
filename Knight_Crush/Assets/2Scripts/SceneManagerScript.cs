@@ -34,9 +34,14 @@ public class SceneManagerScript : MonoBehaviour
         SceneManager.LoadScene("LobbyScene");
     }
 
-    public void GoInGameScene()
+    public void GoStageScene()
     {
-        SceneManager.LoadScene("InGameScene");
+        SceneManager.LoadScene("StageScene");
+    }
+
+    public void GoBonFireScene()
+    {
+        SceneManager.LoadScene("BonFireScene");
     }
 
     public void GoTutorialScene()
@@ -51,7 +56,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void GoStageSelectScene()
     {
-        
+        SceneManager.LoadScene("StageSelectScene");
     }
 
     public void GoResultScene()

@@ -532,6 +532,7 @@ MonoBehaviour:
   MonsterTrans: {fileID: 0}
   DetectedIcon: {fileID: 0}
   ani: {fileID: 0}
+  layer: {fileID: 0}
 --- !u!1 &3710841166800975642
 GameObject:
   m_ObjectHideFlags: 0

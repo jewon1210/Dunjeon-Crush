@@ -1966,7 +1966,7 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 0.4
-    functionName: OnAnimationEvent
+    functionName: CustomEvent
     data: Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

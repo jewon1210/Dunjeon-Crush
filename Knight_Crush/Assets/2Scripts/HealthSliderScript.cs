@@ -32,6 +32,7 @@ namespace Assets.Origin.Scripts
                 Set_Total_Hp_Value();
                 Once = true;
             }
+            UpdateText();
         }
 
         public void Set_Total_Hp_Value()
@@ -66,6 +67,11 @@ namespace Assets.Origin.Scripts
         public void FullHealth()
         {
             HpSlider.value = HpSlider.maxValue;
+        }
+
+        public void UpdateText()
+        {
+            HpText.text = HpSlider.value.ToString();
         }
     }
 }
